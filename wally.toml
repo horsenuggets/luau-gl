@@ -1,0 +1,25 @@
+[package]
+name = "horsenuggets/luau-gl"
+description = "A software graphics library for Luau."
+version = "0.0.0"
+private = true
+license = "MIT"
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+repository = "https://github.com/horsenuggets/luau-gl"
+include = [
+    "default.project.json",
+    "init.luau",
+    "LICENSE",
+    "README.md",
+    "Source",
+    "Source/**",
+    "wally.toml",
+]
+exclude = ["**"]
+
+[dependencies]
+t = "horsenuggets/t@3.1.1-horse.0.3"
+
+[dev-dependencies]
+Testable = "horsenuggets/testable@0.1.0"
