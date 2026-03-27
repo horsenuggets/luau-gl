@@ -6,9 +6,9 @@ Tests for the Export module. Verifies PNG encoding produces valid output.
 
 --]]
 
-local Color = require("@luaugl/Color")
-local Export = require("@luaugl/Export")
-local Framebuffer = require("@luaugl/Framebuffer")
+local Color = require("../Source/LuauGl/Color")
+local Export = require("../Source/LuauGl/Export")
+local Framebuffer = require("../Source/LuauGl/Framebuffer")
 
 return function()
     describe("toPngBuffer", function()

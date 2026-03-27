@@ -12,11 +12,11 @@ local fs = require("@lune/fs")
 
 local PngLuau = require("@packages/PngLuau")
 
-local Color = require("@luaugl/Color")
-local Draw = require("@luaugl/Draw")
-local Export = require("@luaugl/Export")
-local Framebuffer = require("@luaugl/Framebuffer")
-local Gradient = require("@luaugl/Gradient")
+local Color = require("../Source/LuauGl/Color")
+local Draw = require("../Source/LuauGl/Draw")
+local Export = require("../Source/LuauGl/Export")
+local Framebuffer = require("../Source/LuauGl/Framebuffer")
+local Gradient = require("../Source/LuauGl/Gradient")
 
 local OUTPUT_DIR = "Output/Tests"
 

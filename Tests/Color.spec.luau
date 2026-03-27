@@ -6,7 +6,7 @@ Tests for the Color module.
 
 --]]
 
-local Color = require("@luaugl/Color")
+local Color = require("../Source/LuauGl/Color")
 
 return function()
     describe("new", function()

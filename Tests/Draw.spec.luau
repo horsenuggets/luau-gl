@@ -6,9 +6,9 @@ Tests for the Draw module.
 
 --]]
 
-local Color = require("@luaugl/Color")
-local Draw = require("@luaugl/Draw")
-local Framebuffer = require("@luaugl/Framebuffer")
+local Color = require("../Source/LuauGl/Color")
+local Draw = require("../Source/LuauGl/Draw")
+local Framebuffer = require("../Source/LuauGl/Framebuffer")
 
 return function()
     describe("line", function()

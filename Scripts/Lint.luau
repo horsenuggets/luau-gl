@@ -13,23 +13,9 @@ Runs luau-lsp analyze to report type errors and deprecation warnings.
 local process = require("@lune/process")
 
 local function lint()
-    local sourcemapResult = process.exec("rojo", {
-        "sourcemap",
-        "dev.project.json",
-        "-o",
-        "sourcemap.json",
-    })
-
-    if not sourcemapResult.ok then
-        print("Failed to generate sourcemap")
-        print(sourcemapResult.stderr)
-        process.exit(1)
-    end
-
     local result = process.exec("luau-lsp", {
         "analyze",
-        "--platform=roblox",
-        "--sourcemap=sourcemap.json",
+        "--platform=lune",
         "--no-flags-enabled",
         "--ignore=DevPackages/**",
         "--ignore=Packages/**",

@@ -6,8 +6,8 @@ Tests for the Framebuffer module.
 
 --]]
 
-local Color = require("@luaugl/Color")
-local Framebuffer = require("@luaugl/Framebuffer")
+local Color = require("../Source/LuauGl/Color")
+local Framebuffer = require("../Source/LuauGl/Framebuffer")
 
 return function()
     describe("new", function()

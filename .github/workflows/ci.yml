@@ -81,19 +81,8 @@ jobs:
       - name: Setup Lune typedefs
         run: lune setup --no-update-luaurc
 
-      - name: Generate sourcemap
-        run: rojo sourcemap dev.project.json --output sourcemap.json
-
       - name: Run static analysis
-        run: |
-          luau-lsp analyze \
-            --platform=roblox \
-            --sourcemap=sourcemap.json \
-            --no-flags-enabled \
-            --ignore="DevPackages/**" \
-            --ignore="Packages/**" \
-            --ignore="Submodules/**" \
-            .
+        run: lune run ./Submodules/luau-cicd/Scripts/RunStaticAnalysis.luau lune
 
   changelog:
     name: Check changelog format
