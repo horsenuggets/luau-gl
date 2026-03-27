@@ -87,7 +87,7 @@ jobs:
       - name: Run static analysis
         run: |
           luau-lsp analyze \
-            --platform=lune \
+            --platform=roblox \
             --sourcemap=sourcemap.json \
             --no-flags-enabled \
             --ignore="DevPackages/**" \

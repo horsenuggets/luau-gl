@@ -28,7 +28,7 @@ local function lint()
 
     local result = process.exec("luau-lsp", {
         "analyze",
-        "--platform=lune",
+        "--platform=roblox",
         "--sourcemap=sourcemap.json",
         "--no-flags-enabled",
         "--ignore=DevPackages/**",
