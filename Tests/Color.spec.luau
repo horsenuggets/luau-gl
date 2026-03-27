@@ -1,0 +1,105 @@
+--[[
+
+Color
+
+Tests for the Color module.
+
+--]]
+
+local Color = require("@luaugl/Color")
+
+return function()
+    describe("new", function()
+        it("should create a color with RGBA values", function()
+            local c = Color.new(100, 150, 200, 255)
+            expect(c.r).to.equal(100)
+            expect(c.g).to.equal(150)
+            expect(c.b).to.equal(200)
+            expect(c.a).to.equal(255)
+        end)
+
+        it("should default alpha to 255", function()
+            local c = Color.new(10, 20, 30)
+            expect(c.a).to.equal(255)
+        end)
+
+        it("should clamp values to 0-255", function()
+            local c = Color.new(-10, 300, 128, 512)
+            expect(c.r).to.equal(0)
+            expect(c.g).to.equal(255)
+            expect(c.b).to.equal(128)
+            expect(c.a).to.equal(255)
+        end)
+    end)
+
+    describe("fromHex", function()
+        it("should parse a 6-digit hex string", function()
+            local c = Color.fromHex("#FF8000")
+            expect(c.r).to.equal(255)
+            expect(c.g).to.equal(128)
+            expect(c.b).to.equal(0)
+            expect(c.a).to.equal(255)
+        end)
+
+        it("should parse an 8-digit hex string with alpha", function()
+            local c = Color.fromHex("FF000080")
+            expect(c.r).to.equal(255)
+            expect(c.g).to.equal(0)
+            expect(c.b).to.equal(0)
+            expect(c.a).to.equal(128)
+        end)
+    end)
+
+    describe("fromHSV", function()
+        it("should convert red correctly", function()
+            local c = Color.fromHSV(0, 1, 1)
+            expect(c.r).to.equal(255)
+            expect(c.g).to.equal(0)
+            expect(c.b).to.equal(0)
+        end)
+
+        it("should convert green correctly", function()
+            local c = Color.fromHSV(120, 1, 1)
+            expect(c.r).to.equal(0)
+            expect(c.g).to.equal(255)
+            expect(c.b).to.equal(0)
+        end)
+
+        it("should convert blue correctly", function()
+            local c = Color.fromHSV(240, 1, 1)
+            expect(c.r).to.equal(0)
+            expect(c.g).to.equal(0)
+            expect(c.b).to.equal(255)
+        end)
+    end)
+
+    describe("lerp", function()
+        it("should interpolate between two colors", function()
+            local a = Color.new(0, 0, 0)
+            local b = Color.new(255, 255, 255)
+            local mid = Color.lerp(a, b, 0.5)
+            expect(mid.r).to.equal(128)
+            expect(mid.g).to.equal(128)
+            expect(mid.b).to.equal(128)
+        end)
+
+        it("should return the first color at alpha 0", function()
+            local a = Color.new(100, 50, 25)
+            local b = Color.new(200, 150, 75)
+            local result = Color.lerp(a, b, 0)
+            expect(result.r).to.equal(100)
+            expect(result.g).to.equal(50)
+            expect(result.b).to.equal(25)
+        end)
+    end)
+
+    describe("presets", function()
+        it("should have correct preset colors", function()
+            expect(Color.Black.r).to.equal(0)
+            expect(Color.White.r).to.equal(255)
+            expect(Color.Red.r).to.equal(255)
+            expect(Color.Red.g).to.equal(0)
+            expect(Color.Transparent.a).to.equal(0)
+        end)
+    end)
+end
