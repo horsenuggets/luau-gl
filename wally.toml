@@ -19,6 +19,7 @@ include = [
 exclude = ["**"]
 
 [dependencies]
+PngLuau = "grilme99/png-luau@0.2.1"
 t = "horsenuggets/t@3.1.1-horse.0.3"
 
 [dev-dependencies]
