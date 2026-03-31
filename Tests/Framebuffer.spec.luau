@@ -1,6 +1,6 @@
 --[[
 
-Framebuffer
+Framebuffer.spec
 
 Tests for the Framebuffer module.
 

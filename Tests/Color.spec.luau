@@ -1,6 +1,6 @@
 --[[
 
-Color
+Color.spec
 
 Tests for the Color module.
 
