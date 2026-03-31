@@ -1,6 +1,6 @@
 --[[
 
-Export
+Export.spec
 
 Tests for the Export module. Verifies PNG encoding produces valid output.
 

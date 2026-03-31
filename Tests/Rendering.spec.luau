@@ -1,6 +1,6 @@
 --[[
 
-Rendering
+Rendering.spec
 
 Integration tests that render every primitive and gradient type to real PNG files,
 then verify the output by decoding and spot-checking pixel values. Output files are

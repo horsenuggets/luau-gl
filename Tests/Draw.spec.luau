@@ -1,6 +1,6 @@
 --[[
 
-Draw
+Draw.spec
 
 Tests for the Draw module.
 
