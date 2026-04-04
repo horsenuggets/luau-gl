@@ -2,7 +2,6 @@
 name = "horsenuggets/luau-gl"
 description = "A software graphics library for Luau."
 version = "0.0.1"
-private = true
 license = "MIT"
 realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"
