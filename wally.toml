@@ -1,13 +1,14 @@
 [package]
 name = "horsenuggets/luau-gl"
 description = "A software graphics library for Luau."
-version = "0.0.0"
+version = "0.0.1"
 private = true
 license = "MIT"
 realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"
 repository = "https://github.com/horsenuggets/luau-gl"
 include = [
+    ".luaurc",
     "default.project.json",
     "init.luau",
     "LICENSE",
@@ -19,7 +20,8 @@ include = [
 exclude = ["**"]
 
 [dependencies]
+PngLuau = "grilme99/png-luau@0.2.1"
 t = "horsenuggets/t@3.1.1-horse.0.3"
 
 [dev-dependencies]
-Testable = "horsenuggets/testable@0.1.0"
+Testable = "horsenuggets/testable@1.1.2"
