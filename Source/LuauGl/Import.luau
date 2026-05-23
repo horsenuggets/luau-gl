@@ -22,7 +22,7 @@ function Import.fromPngBuffer(buf: buffer): Framebuffer
 
     local png = PngLuau.decode(buf)
     local fb = Framebuffer.new(png.width, png.height)
-    buffer.copy(fb.Data, 0, png.pixels, 0, png.width * png.height * 4)
+    buffer.copy(fb.Data, 0, png.pixels, 0, buffer.len(fb.Data))
     return fb
 end
 
