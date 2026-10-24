@@ -7,7 +7,7 @@ fields (0-255 integers). Provides constructors from various formats and interpol
 
 --]]
 
-local t = require("@packages/t")
+const t = require("@packages/t")
 
 export type Color = {
     r: number,
@@ -16,9 +16,9 @@ export type Color = {
     a: number,
 }
 
-local Color = {}
+const Color = {}
 
-local function clamp(value: number): number
+const function clamp(value: number): number
     return math.clamp(math.floor(value + 0.5), 0, 255)
 end
 
@@ -39,13 +39,13 @@ end
 function Color.fromHex(hex: string): Color
     assert(t.string(hex))
 
-    local stripped = hex:gsub("^#", "")
+    const stripped = hex:gsub("^#", "")
     assert(#stripped == 6 or #stripped == 8, `Invalid hex color "{hex}"`)
 
-    local r = tonumber(stripped:sub(1, 2), 16) :: number
-    local g = tonumber(stripped:sub(3, 4), 16) :: number
-    local b = tonumber(stripped:sub(5, 6), 16) :: number
-    local a = if #stripped == 8 then tonumber(stripped:sub(7, 8), 16) :: number else 255
+    const r = tonumber(stripped:sub(1, 2), 16) :: number
+    const g = tonumber(stripped:sub(3, 4), 16) :: number
+    const b = tonumber(stripped:sub(5, 6), 16) :: number
+    const a = if #stripped == 8 then tonumber(stripped:sub(7, 8), 16) :: number else 255
 
     return Color.new(r, g, b, a)
 end
@@ -60,9 +60,9 @@ function Color.fromHSV(h: number, s: number, v: number, a: number?): Color
     s = math.clamp(s, 0, 1)
     v = math.clamp(v, 0, 1)
 
-    local c = v * s
-    local x = c * (1 - math.abs((h / 60) % 2 - 1))
-    local m = v - c
+    const c = v * s
+    const x = c * (1 - math.abs((h / 60) % 2 - 1))
+    const m = v - c
 
     local r, g, b
     if h < 60 then

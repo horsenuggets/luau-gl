@@ -6,12 +6,12 @@ Software rendering library for Luau.
 
 --]]
 
-local Color = require("@self/Color")
-local Draw = require("@self/Draw")
-local Export = require("@self/Export")
-local Framebuffer = require("@self/Framebuffer")
-local Gradient = require("@self/Gradient")
-local Import = require("@self/Import")
+const Color = require("@self/Color")
+const Draw = require("@self/Draw")
+const Export = require("@self/Export")
+const Framebuffer = require("@self/Framebuffer")
+const Gradient = require("@self/Gradient")
+const Import = require("@self/Import")
 
 return {
     Color = Color,
