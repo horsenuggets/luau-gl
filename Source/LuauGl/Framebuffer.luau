@@ -8,13 +8,13 @@ clear and fill.
 
 --]]
 
-local t = require("@packages/t")
+const t = require("@packages/t")
 
-local Color = require("./Color")
+const Color = require("./Color")
 
 type Color = Color.Color
 
-local BYTES_PER_PIXEL = 4
+const BYTES_PER_PIXEL = 4
 
 export type Framebuffer = {
     Width: number,
@@ -29,7 +29,7 @@ export type Framebuffer = {
     Clone: (self: Framebuffer) -> Framebuffer,
 }
 
-local Framebuffer = {}
+const Framebuffer = {}
 Framebuffer.__index = Framebuffer
 
 function Framebuffer.new(width: number, height: number): Framebuffer
@@ -38,7 +38,7 @@ function Framebuffer.new(width: number, height: number): Framebuffer
     assert(width > 0 and height > 0, "Dimensions must be positive")
     assert(width == math.floor(width) and height == math.floor(height), "Dimensions must be integers")
 
-    local self = setmetatable({}, Framebuffer) :: any
+    const self = setmetatable({}, Framebuffer) :: any
     self.Width = width
     self.Height = height
     self.Data = buffer.create(width * height * BYTES_PER_PIXEL)
@@ -54,7 +54,7 @@ function Framebuffer.SetPixel(self: Framebuffer, x: number, y: number, color: Co
         return
     end
 
-    local offset = (y * self.Width + x) * BYTES_PER_PIXEL
+    const offset = (y * self.Width + x) * BYTES_PER_PIXEL
     buffer.writeu8(self.Data, offset, color.r)
     buffer.writeu8(self.Data, offset + 1, color.g)
     buffer.writeu8(self.Data, offset + 2, color.b)
@@ -64,7 +64,7 @@ end
 function Framebuffer.GetPixel(self: Framebuffer, x: number, y: number): Color
     assert(self:IsInBounds(x, y), `Pixel ({x}, {y}) is out of bounds`)
 
-    local offset = (y * self.Width + x) * BYTES_PER_PIXEL
+    const offset = (y * self.Width + x) * BYTES_PER_PIXEL
     return {
         r = buffer.readu8(self.Data, offset),
         g = buffer.readu8(self.Data, offset + 1),
@@ -87,10 +87,10 @@ function Framebuffer.BlendPixel(self: Framebuffer, x: number, y: number, color: 
         return
     end
 
-    local dst = self:GetPixel(x, y)
-    local srcA = color.a / 255
-    local dstA = dst.a / 255
-    local outA = srcA + dstA * (1 - srcA)
+    const dst = self:GetPixel(x, y)
+    const srcA = color.a / 255
+    const dstA = dst.a / 255
+    const outA = srcA + dstA * (1 - srcA)
 
     if outA == 0 then
         self:SetPixel(x, y, Color.Transparent)
@@ -106,11 +106,11 @@ function Framebuffer.BlendPixel(self: Framebuffer, x: number, y: number, color: 
 end
 
 function Framebuffer.Clear(self: Framebuffer, color: Color?)
-    local c = color or Color.Transparent
-    local size = self.Width * self.Height
+    const c = color or Color.Transparent
+    const size = self.Width * self.Height
 
     for i = 0, size - 1 do
-        local offset = i * BYTES_PER_PIXEL
+        const offset = i * BYTES_PER_PIXEL
         buffer.writeu8(self.Data, offset, c.r)
         buffer.writeu8(self.Data, offset + 1, c.g)
         buffer.writeu8(self.Data, offset + 2, c.b)
@@ -119,10 +119,10 @@ function Framebuffer.Clear(self: Framebuffer, color: Color?)
 end
 
 function Framebuffer.Fill(self: Framebuffer, x: number, y: number, w: number, h: number, color: Color)
-    local x0 = math.max(0, x)
-    local y0 = math.max(0, y)
-    local x1 = math.min(self.Width, x + w)
-    local y1 = math.min(self.Height, y + h)
+    const x0 = math.max(0, x)
+    const y0 = math.max(0, y)
+    const x1 = math.min(self.Width, x + w)
+    const y1 = math.min(self.Height, y + h)
 
     for py = y0, y1 - 1 do
         for px = x0, x1 - 1 do
@@ -132,7 +132,7 @@ function Framebuffer.Fill(self: Framebuffer, x: number, y: number, w: number, h:
 end
 
 function Framebuffer.Clone(self: Framebuffer): Framebuffer
-    local clone = Framebuffer.new(self.Width, self.Height)
+    const clone = Framebuffer.new(self.Width, self.Height)
     buffer.copy(clone.Data, 0, self.Data, 0, buffer.len(self.Data))
     return clone
 end

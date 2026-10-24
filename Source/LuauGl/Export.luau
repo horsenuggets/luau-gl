@@ -6,15 +6,15 @@ File export utilities for framebuffers. Supports saving to PNG format using png-
 
 --]]
 
-local t = require("@packages/t")
+const t = require("@packages/t")
 
-local PngLuau = require("@packages/PngLuau")
+const PngLuau = require("@packages/PngLuau")
 
-local Framebuffer = require("./Framebuffer")
+const Framebuffer = require("./Framebuffer")
 
 type Framebuffer = Framebuffer.Framebuffer
 
-local Export = {}
+const Export = {}
 
 function Export.toPngBuffer(fb: Framebuffer): buffer
     assert(t.table(fb))

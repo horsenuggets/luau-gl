@@ -8,15 +8,15 @@ circles).
 
 --]]
 
-local t = require("@packages/t")
+const t = require("@packages/t")
 
-local Color = require("./Color")
-local Framebuffer = require("./Framebuffer")
+const Color = require("./Color")
+const Framebuffer = require("./Framebuffer")
 
 type Color = Color.Color
 type Framebuffer = Framebuffer.Framebuffer
 
-local Draw = {}
+const Draw = {}
 
 function Draw.line(fb: Framebuffer, x0: number, y0: number, x1: number, y1: number, color: Color)
     assert(t.table(fb))
@@ -31,10 +31,10 @@ function Draw.line(fb: Framebuffer, x0: number, y0: number, x1: number, y1: numb
     x1 = math.floor(x1)
     y1 = math.floor(y1)
 
-    local dx = math.abs(x1 - x0)
-    local dy = -math.abs(y1 - y0)
-    local sx = if x0 < x1 then 1 else -1
-    local sy = if y0 < y1 then 1 else -1
+    const dx = math.abs(x1 - x0)
+    const dy = -math.abs(y1 - y0)
+    const sx = if x0 < x1 then 1 else -1
+    const sy = if y0 < y1 then 1 else -1
     local err = dx + dy
 
     while true do
@@ -44,7 +44,7 @@ function Draw.line(fb: Framebuffer, x0: number, y0: number, x1: number, y1: numb
             break
         end
 
-        local e2 = 2 * err
+        const e2 = 2 * err
         if e2 >= dy then
             err += dy
             x0 += sx
@@ -136,7 +136,7 @@ function Draw.fillCircle(fb: Framebuffer, cx: number, cy: number, radius: number
     local y = 0
     local err = 1 - radius
 
-    local function drawHLine(startX: number, endX: number, row: number)
+    const function drawHLine(startX: number, endX: number, row: number)
         for px = startX, endX do
             fb:SetPixel(px, row, color)
         end
@@ -210,21 +210,21 @@ function Draw.fillTriangle(
         y1, y2 = y2, y1
     end
 
-    local totalHeight = y2 - y0
+    const totalHeight = y2 - y0
     if totalHeight == 0 then
         return
     end
 
     for py = y0, y2 do
-        local secondHalf = py > y1 or y1 == y0
-        local segmentHeight = if secondHalf then y2 - y1 else y1 - y0
+        const secondHalf = py > y1 or y1 == y0
+        const segmentHeight = if secondHalf then y2 - y1 else y1 - y0
 
         if segmentHeight == 0 then
             continue
         end
 
-        local alpha = (py - y0) / totalHeight
-        local beta = if secondHalf then (py - y1) / segmentHeight else (py - y0) / segmentHeight
+        const alpha = (py - y0) / totalHeight
+        const beta = if secondHalf then (py - y1) / segmentHeight else (py - y0) / segmentHeight
 
         local ax = x0 + (x2 - x0) * alpha
         local bx = if secondHalf then x1 + (x2 - x1) * beta else x0 + (x1 - x0) * beta
