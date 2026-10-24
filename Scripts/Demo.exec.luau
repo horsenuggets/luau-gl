@@ -2,10 +2,12 @@
 
 --[[
 
-Demo
+Demo.exec
 
 Generates sample PNG images demonstrating luau-gl capabilities. Outputs files to an
 "Output" directory in the project root.
+
+[Usage] ./Scripts/Demo.exec.luau
 
 --]]
 
@@ -133,7 +135,9 @@ local function demoCheckerboard()
     save(fb, "Checkerboard")
 end
 
-local function demo()
+const Demo = {}
+
+function Demo.exec()
     ensureOutputDir()
 
     print("Generating demo images...")
@@ -152,4 +156,4 @@ local function demo()
     print(`Done. {8} images saved to "{OUTPUT_DIR}/"`)
 end
 
-demo()
+Demo.exec()
