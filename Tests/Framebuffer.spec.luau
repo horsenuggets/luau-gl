@@ -8,6 +8,8 @@ Tests for the Framebuffer module.
 
 const Color = require("../Source/LuauGl/Color")
 const Framebuffer = require("../Source/LuauGl/Framebuffer")
+const Testable = require("@devpackages/Testable")
+const describe, expect, it = Testable.describe, Testable.expect, Testable.it
 
 return function()
     describe("new", function()
