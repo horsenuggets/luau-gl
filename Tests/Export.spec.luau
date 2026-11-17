@@ -9,6 +9,8 @@ Tests for the Export module. Verifies PNG encoding produces valid output.
 const Color = require("../Source/LuauGl/Color")
 const Export = require("../Source/LuauGl/Export")
 const Framebuffer = require("../Source/LuauGl/Framebuffer")
+const Testable = require("@devpackages/Testable")
+const describe, expect, it = Testable.describe, Testable.expect, Testable.it
 
 return function()
     describe("toPngBuffer", function()

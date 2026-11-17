@@ -17,6 +17,8 @@ const Draw = require("../Source/LuauGl/Draw")
 const Export = require("../Source/LuauGl/Export")
 const Framebuffer = require("../Source/LuauGl/Framebuffer")
 const Gradient = require("../Source/LuauGl/Gradient")
+const Testable = require("@devpackages/Testable")
+const beforeAll, describe, expect, it = Testable.beforeAll, Testable.describe, Testable.expect, Testable.it
 
 const OUTPUT_DIR = "Output/Tests"
 

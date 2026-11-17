@@ -9,6 +9,8 @@ Tests for the Draw module.
 const Color = require("../Source/LuauGl/Color")
 const Draw = require("../Source/LuauGl/Draw")
 const Framebuffer = require("../Source/LuauGl/Framebuffer")
+const Testable = require("@devpackages/Testable")
+const describe, expect, it = Testable.describe, Testable.expect, Testable.it
 
 return function()
     describe("line", function()

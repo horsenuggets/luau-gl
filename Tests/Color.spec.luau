@@ -7,6 +7,8 @@ Tests for the Color module.
 --]]
 
 const Color = require("../Source/LuauGl/Color")
+const Testable = require("@devpackages/Testable")
+const describe, expect, it = Testable.describe, Testable.expect, Testable.it
 
 return function()
     describe("new", function()
