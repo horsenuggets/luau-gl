@@ -21,7 +21,7 @@ function Export.toPngBuffer(fb: Framebuffer): buffer
 
     return PngLuau.encode(fb.Data, {
         width = fb.Width,
-        height = fb.Height,
+        height = fb.Height
     })
 end
 

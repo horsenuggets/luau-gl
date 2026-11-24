@@ -22,7 +22,7 @@ function Lint.exec()
         "--ignore=DevPackages/**",
         "--ignore=Packages/**",
         "--ignore=Submodules/**",
-        ".",
+        "."
     })
 
     if result.stdout ~= "" then
