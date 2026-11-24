@@ -26,7 +26,7 @@ export type Framebuffer = {
     Fill: (self: Framebuffer, x: number, y: number, w: number, h: number, color: Color) -> (),
     BlendPixel: (self: Framebuffer, x: number, y: number, color: Color) -> (),
     IsInBounds: (self: Framebuffer, x: number, y: number) -> boolean,
-    Clone: (self: Framebuffer) -> Framebuffer,
+    Clone: (self: Framebuffer) -> Framebuffer
 }
 
 const Framebuffer = {}
@@ -69,7 +69,7 @@ function Framebuffer.GetPixel(self: Framebuffer, x: number, y: number): Color
         r = buffer.readu8(self.Data, offset),
         g = buffer.readu8(self.Data, offset + 1),
         b = buffer.readu8(self.Data, offset + 2),
-        a = buffer.readu8(self.Data, offset + 3),
+        a = buffer.readu8(self.Data, offset + 3)
     }
 end
 
@@ -101,7 +101,7 @@ function Framebuffer.BlendPixel(self: Framebuffer, x: number, y: number, color: 
         r = math.floor((color.r * srcA + dst.r * dstA * (1 - srcA)) / outA + 0.5),
         g = math.floor((color.g * srcA + dst.g * dstA * (1 - srcA)) / outA + 0.5),
         b = math.floor((color.b * srcA + dst.b * dstA * (1 - srcA)) / outA + 0.5),
-        a = math.floor(outA * 255 + 0.5),
+        a = math.floor(outA * 255 + 0.5)
     })
 end
 

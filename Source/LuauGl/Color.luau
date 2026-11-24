@@ -13,7 +13,7 @@ export type Color = {
     r: number,
     g: number,
     b: number,
-    a: number,
+    a: number
 }
 
 const Color = {}
@@ -32,7 +32,7 @@ function Color.new(r: number, g: number, b: number, a: number?): Color
         r = clamp(r),
         g = clamp(g),
         b = clamp(b),
-        a = clamp(a or 255),
+        a = clamp(a or 255)
     }
 end
 

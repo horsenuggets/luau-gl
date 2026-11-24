@@ -19,5 +19,5 @@ return {
     Export = Export,
     Framebuffer = Framebuffer,
     Gradient = Gradient,
-    Import = Import,
+    Import = Import
 }
